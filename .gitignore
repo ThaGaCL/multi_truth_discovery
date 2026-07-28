@@ -1,0 +1,22 @@
+# Ignore large datasets (> 100MB)
+Datasets/
+BLIND/
+Truth_Discovery_Comparative_Analysis/
+
+# Ignore compiled files
+*.class
+*.o
+*.so
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore OS files
+.DS_Store
+Thumbs.db

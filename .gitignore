@@ -2,9 +2,7 @@
 Datasets/title.crew.csv
 Datasets/name.basics.csv
 Datasets/title.basics.csv
-Datasets/imdb/title.crew.tsv
-Datasets/imdb/name.basics.tsv
-Datasets/imdb/title.basics.tsv
+Datasets/imdb/*.tsv
 
 # Ignore subdirectories that are repositories
 BLIND/

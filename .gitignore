@@ -1,5 +1,9 @@
-# Ignore large datasets (> 100MB)
-Datasets/
+# Ignore specific large files (> 100MB)
+Datasets/title.crew.csv
+Datasets/name.basics.csv
+Datasets/title.basics.csv
+
+# Ignore subdirectories that are repositories
 BLIND/
 Truth_Discovery_Comparative_Analysis/
 

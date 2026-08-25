@@ -2,12 +2,16 @@ import csv
 import unicodedata
 import re
 
-input_file = '/home/thilons/Documentos/tcc/multi_truth_discovery/Datasets/joined/dataset_full_tmdb_wd.csv'
-output_file = '/home/thilons/Documentos/tcc/multi_truth_discovery/Datasets/normalized/normalized_dataset_full.csv'
+input_file = '/home/thilons/Documentos/tcc/multi_truth_discovery/Datasets/joined/6k_dataset_full_tmdb_wd_cm_leb.csv'
+output_file = '/home/thilons/Documentos/tcc/multi_truth_discovery/Datasets/normalized/4s_6k_normalized_dataset_full.csv'
 
 def normalizar_texto(texto, is_nome=False):
     """Remove acentos, pontuações indesejadas, espaços extras e padroniza em minúsculas."""
     if texto == '\\N' or not str(texto).strip():
+        return '\\N'
+        
+    # Filtra o texto de erro padrão retornado pelo scraper do Letterboxd
+    if texto.strip() == 'IMDb ID Not found':
         return '\\N'
     
     # 1. Transliteração (Remove acentos: Émile -> emile)
@@ -47,7 +51,7 @@ def processar_lista(texto_bruto, is_nome=True):
     # Ordena a lista para manter consistência nas execuções e junta novamente
     return '; '.join(sorted(list(itens_limpos)))
 
-print("Iniciando normalização mantendo a estrutura original do CSV...")
+print("Iniciando normalização das 4 fontes (TMDB, Wikidata, Cinemeta, Letterboxd)...")
 
 with open(input_file, 'r', encoding='utf-8') as infile, \
      open(output_file, 'w', encoding='utf-8', newline='') as outfile:
@@ -69,13 +73,22 @@ with open(input_file, 'r', encoding='utf-8') as infile, \
         
         # --- Normaliza dados do Wikidata ---
         titulo_wd = normalizar_texto(row['wikidata_title'], is_nome=False)
-        # Uma verificação extra caso o Wikidata tenha devolvido um Q-code no lugar do título do filme
         if re.match(r'^q\d+$', titulo_wd):
             titulo_wd = '\\N'
         nova_linha['wikidata_title'] = titulo_wd
         
         nova_linha['wikidata_directors'] = processar_lista(row['wikidata_directors'], is_nome=True)
         nova_linha['wikidata_writers'] = processar_lista(row['wikidata_writers'], is_nome=True)
+        
+        # --- Normaliza dados do Cinemeta ---
+        nova_linha['cinemeta_title'] = normalizar_texto(row['cinemeta_title'], is_nome=False)
+        nova_linha['cinemeta_directors'] = processar_lista(row['cinemeta_directors'], is_nome=True)
+        nova_linha['cinemeta_writers'] = processar_lista(row['cinemeta_writers'], is_nome=True)
+        
+        # --- Normaliza dados do Letterboxd ---
+        nova_linha['letterboxd_title'] = normalizar_texto(row['letterboxd_title'], is_nome=False)
+        nova_linha['letterboxd_directors'] = processar_lista(row['letterboxd_directors'], is_nome=True)
+        nova_linha['letterboxd_writers'] = processar_lista(row['letterboxd_writers'], is_nome=True)
         
         writer.writerow(nova_linha)
 

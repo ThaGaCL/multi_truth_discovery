@@ -3,17 +3,17 @@ import requests
 import time
 
 
-input_file = '/home/thilons/Documentos/tcc/multi_truth_discovery/Datasets/selected.title.crew.csv'
-output_file = '/home/thilons/Documentos/tcc/multi_truth_discovery/Datasets/omdb/omdb_data_pt2.csv'
+input_file = '/home/thilons/Documentos/tcc/multi_truth_discovery/Datasets/6kselected.title.crew.csv'
+output_file = '/home/thilons/Documentos/tcc/multi_truth_discovery/Datasets/omdb/6komdb_data_pt8.csv'
 
-api_key = '3ce6f63'
+api_key = ''
 
 # --- CONFIGURAÇÃO DO INTERVALO  ---
 # (OMdB só aceita 1000 reqs por dia)
 # Hoje: start_row = 0, end_row = 1000
 # Amanhã: start_row = 999, end_row = 1500
-start_row = 999
-end_row = 1500
+start_row = 500
+end_row = 502
 
 print(f"Iniciando coleta na API do OMDb (Linhas {start_row} a {end_row - 1})...")
 

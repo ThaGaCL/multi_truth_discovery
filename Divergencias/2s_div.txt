@@ -1,0 +1,28 @@
+Analisando matriz de dados TMDB vs Wikidata...
+
+Total de Filmes Analisados: 1500
+==================================================
+
+TÍTULOS (Atributo de Verdade Única)
+Concordância Exata: 291
+Divergência / Conflito: 96
+Informação em apenas 1 fonte: 433
+Nenhuma fonte informou: 680
+
+--- DIRETORES (Atributo de Múltiplas Verdades) ---
+Concordância Exata (Sets 100% iguais): 303
+Divergência Parcial (Concordam em alguns, discordam em outros): 18
+Divergência Total (Nomes completamente diferentes): 45
+Informação em apenas 1 fonte: 429
+Nenhuma fonte informou: 705
+-> Quando ambas as fontes opinam, divergem em 17.2% das vezes.
+
+--- ROTEIRISTAS (Atributo de Múltiplas Verdades) ---
+Concordância Exata (Sets 100% iguais): 101
+Divergência Parcial (Concordam em alguns, discordam em outros): 59
+Divergência Total (Nomes completamente diferentes): 22
+Informação em apenas 1 fonte: 421
+Nenhuma fonte informou: 897
+-> Quando ambas as fontes opinam, divergem em 44.5% das vezes.
+
+==================================================

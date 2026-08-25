@@ -2,13 +2,12 @@ import csv
 import requests
 import time
 
-input_file = '/home/thilons/Documentos/tcc/multi_truth_discovery/Datasets/selected.title.crew.csv'
-output_file = '/home/thilons/Documentos/tcc/multi_truth_discovery/Datasets/tmdb/tmdb_data.csv'
+input_file = '/home/thilons/Documentos/tcc/multi_truth_discovery/Datasets/6kselected.title.crew.csv'
+output_file = '/home/thilons/Documentos/tcc/multi_truth_discovery/Datasets/tmdb/6ktmdb_data.csv'
 
-# Cole a sua chave gerada no site do TMDB aqui
-api_key = '3930dd0a1ccf2aa5be8e5a6f38076b99'
+api_key = ''
 
-print("Iniciando coleta na API do TMDB...")
+print("Inici    ando coleta na API do TMDB...")
 
 with open(input_file, 'r', encoding='utf-8') as infile, \
      open(output_file, 'w', encoding='utf-8', newline='') as outfile:
@@ -16,7 +15,6 @@ with open(input_file, 'r', encoding='utf-8') as infile, \
     reader = csv.DictReader(infile)
     writer = csv.writer(outfile)
     
-    # Cabeçalho padronizado para o Join posterior
     writer.writerow(['tconst', 'tmdb_title', 'tmdb_directors', 'tmdb_writers'])
     
     for indice, row in enumerate(reader):
@@ -62,8 +60,6 @@ with open(input_file, 'r', encoding='utf-8') as infile, \
         except Exception as e:
             print(f"[{indice}] {tconst} Erro inesperado: {e}")
              
-        # O TMDB permite 40 requisições a cada 10 segundos. 
-        # A pausa de 0.3s mantém você numa margem 100% segura (aprox. 33 req/10s).
         time.sleep(0.3)
 
 print(f"\nColeta finalizada! Matriz salva em: {output_file}")

@@ -2,9 +2,9 @@ import csv
 import random
 
 
-filename = '/home/thilons/Documentos/tcc/Datasets/title.crew.csv'
-resultFile = '/home/thilons/Documentos/tcc/Datasets/selected.title.crew.csv'
-basics_file = '/home/thilons/Documentos/tcc/Datasets/title.basics.csv'
+filename = '/home/thilons/Documentos/tcc/multi_truth_discovery/Datasets/title.crew.csv'
+resultFile = '/home/thilons/Documentos/tcc/multi_truth_discovery/Datasets/6kselected.title.crew.csv'
+basics_file = '/home/thilons/Documentos/tcc/multi_truth_discovery/Datasets/title.basics.csv'
 
 valid_tconsts = []
 with open(basics_file, 'r', encoding='utf-8') as file:
@@ -15,7 +15,7 @@ with open(basics_file, 'r', encoding='utf-8') as file:
 
 print(f"Tconsts validos {len(valid_tconsts)}")
 
-num_samples = min(1500, len(valid_tconsts))
+num_samples = min(6000, len(valid_tconsts))
 chosen_tconsts = set(random.sample(valid_tconsts, num_samples))
 
 chosen_rows = []

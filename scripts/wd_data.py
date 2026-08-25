@@ -2,8 +2,8 @@ import csv
 import requests
 import time
 
-input_file = '/home/thilons/Documentos/tcc/multi_truth_discovery/Datasets/selected.title.crew.csv'
-output_file = '/home/thilons/Documentos/tcc/multi_truth_discovery/Datasets/omdb/wikidata_data.csv'
+input_file = '/home/thilons/Documentos/tcc/multi_truth_discovery/Datasets/6kselected.title.crew.csv'
+output_file = '/home/thilons/Documentos/tcc/multi_truth_discovery/Datasets/omdb/6kwikidata_data.csv'
 
 # O Endpoint público do Wikidata para executar consultas SPARQL
 url_sparql = 'https://query.wikidata.org/sparql'
@@ -25,11 +25,7 @@ with open(input_file, 'r', encoding='utf-8') as infile, \
     
     for row in reader:
         tconst = row['tconst']
-        
-        # Consulta SPARQL: 
-        # 1. Busca o item que tem o IMDb ID (P345) correspondente.
-        # 2. Pega opcionalmente Diretores (P57) e Roteiristas (P58).
-        # 3. Usa o serviço de Labels para trazer os nomes legíveis em Inglês ou Português.
+           
         query = f"""
         SELECT ?itemLabel ?directorLabel ?writerLabel WHERE {{
           ?item wdt:P345 "{tconst}" .
@@ -60,14 +56,13 @@ with open(input_file, 'r', encoding='utf-8') as infile, \
             
             for item in bindings:
                 if 'directorLabel' in item:
-                    # Ignora IDs crus (como Q12345) que o Wikidata retorna quando não acha a tradução do nome
+                    # Ignora IDs (como Q12345) que o Wikidata retorna quando não acha a tradução do nome
                     if not item['directorLabel']['value'].startswith('http'):
                         diretores.add(item['directorLabel']['value'])
                 if 'writerLabel' in item:
                     if not item['writerLabel']['value'].startswith('http'):
                         roteiristas.add(item['writerLabel']['value'])
             
-            # Formata para manter o padrão que o seu modelo espera
             dir_str = "; ".join(diretores) if diretores else '\\N'
             rot_str = "; ".join(roteiristas) if roteiristas else '\\N'
             
@@ -81,8 +76,6 @@ with open(input_file, 'r', encoding='utf-8') as infile, \
         except Exception as e:
             print(f"[{tconst}] Erro inesperado: {e}")
              
-        # O Wikidata tolera cerca de 1 a 2 requisições por segundo, mas para 
-        # raspar 1500 entidades em sequência, um atraso de 1 segundo é o ideal.
         time.sleep(1)
 
 print(f"Coleta finalizada! Dados salvos em {output_file}")

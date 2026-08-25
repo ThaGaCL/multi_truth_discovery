@@ -1,0 +1,29 @@
+Analisando matriz de dados (TMDB vs Wikidata vs Cinemeta vs Letterboxd)...
+
+Total de Filmes Analisados: 6000
+============================================================
+
+TÍTULOS (Atributo de Verdade Única)
+Concordância Exata: 2688
+Divergência / Conflito: 518
+Informação em apenas 1 fonte: 2767
+Nenhuma fonte informou: 27
+-> Quando múltiplas fontes opinam, divergem em 16.2% das vezes.
+
+--- DIRETORES (Atributo de Múltiplas Verdades) ---
+Concordância Exata (Listas 100% idênticas): 2717
+Divergência Parcial (Concordam em alguns nomes): 289
+Divergência Total (Nomes completamente diferentes): 34
+Informação em apenas 1 fonte: 2195
+Nenhuma fonte informou: 765
+-> Quando múltiplas fontes opinam, divergem em 10.6% das vezes.
+
+--- ROTEIRISTAS (Atributo de Múltiplas Verdades) ---
+Concordância Exata (Listas 100% idênticas): 1522
+Divergência Parcial (Concordam em alguns nomes): 711
+Divergência Total (Nomes completamente diferentes): 33
+Informação em apenas 1 fonte: 2033
+Nenhuma fonte informou: 1701
+-> Quando múltiplas fontes opinam, divergem em 32.8% das vezes.
+
+============================================================

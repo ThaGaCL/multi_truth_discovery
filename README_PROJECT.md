@@ -14,20 +14,7 @@ Coleção de datasets utilizados na pesquisa:
   - `wikidata/` - Dados do Wikidata
   - `joined/` - Dataset final consolidado (`dataset_full.csv`)
 
-### 2. 🔐 **BLIND** - Blind Blockchain Information Ledger Discovery
-Repositório: https://github.com/ndslab-unipa/BLIND (fork)
-- Implementação de um sistema de ledger blindado
-- Localização: `./BLIND/`
-- Status: Independente, sem mudanças recentes
-
-**Como usar:**
-```bash
-cd BLIND
-pip install -r requirements.txt
-# Ver documentação em BLIND/README.md
-```
-
-### 3. 📊 **Truth Discovery Comparative Analysis**
+### **Truth Discovery Comparative Analysis**
 Repositório: https://github.com/LaureBerti/Truth_Discovery_Comparative_Analysis (fork, branch: update)
 - Implementação Java dos algoritmos de descoberta de verdade
 - Localização: `./Truth_Discovery_Comparative_Analysis/`
